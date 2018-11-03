@@ -2,10 +2,10 @@
 /**
  * New Webcode - плагин для простого добавления счетчиков
  *
- * Версия:	1.0.2
- * Автор:	Александр Вереник
- * Профиль:	http://livestreet.ru/profile/Wasja/
- * GitHub:	https://github.com/wasja1982/livestreet_newsocialcomments
+ * Версия:    1.0.2
+ * Автор:    Александр Вереник
+ * Профиль:    http://livestreet.ru/profile/Wasja/
+ * GitHub:    https://github.com/wasja1982/livestreet_newsocialcomments
  *
  * Основан на плагине "Webcode" (автор: Артем Сошников) - https://catalog.livestreetcms.com/addon/view/171/
  *
@@ -16,7 +16,7 @@
 $config = array();
 
 // Очищать данные при деактивации
-$config['dropuninstall'] = true;
+$config['dropuninstall'] = false;
 
 // Показывать пункт меню
 $config['show_menu'] = true;

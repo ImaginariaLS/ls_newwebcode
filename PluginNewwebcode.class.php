@@ -2,10 +2,10 @@
 /**
  * New Webcode - плагин для простого добавления счетчиков
  *
- * Версия:	1.0.2
- * Автор:	Александр Вереник
- * Профиль:	http://livestreet.ru/profile/Wasja/
- * GitHub:	https://github.com/wasja1982/livestreet_newsocialcomments
+ * Версия:    1.0.2
+ * Автор:    Александр Вереник
+ * Профиль:    http://livestreet.ru/profile/Wasja/
+ * GitHub:    https://github.com/wasja1982/livestreet_newsocialcomments
  *
  * Основан на плагине "Webcode" (автор: Артем Сошников) - https://catalog.livestreetcms.com/addon/view/171/
  *
@@ -13,17 +13,20 @@
  *
  **/
 
-if (! class_exists ( 'Plugin' )) {
-    die ( 'Hacking attemp!' );
+if (!class_exists('Plugin')) {
+    die ('Hacking attemp!');
 }
 
-class PluginNewwebcode extends Plugin {
-    public function Activate() {
+class PluginNewwebcode extends Plugin
+{
+    public function Activate()
+    {
         return true;
     }
 
-    public function Deactivate() {
-        if (Config::Get ('plugin.newwebcode.dropuninstall') == true) {
+    public function Deactivate()
+    {
+        if (Config::Get('plugin.newwebcode.dropuninstall') == true) {
             $aHooks = Config::Get('plugin.newwebcode.hooks');
             if ($aHooks && is_array($aHooks)) {
                 foreach (array_unique($aHooks) as $sHook) {
@@ -36,7 +39,8 @@ class PluginNewwebcode extends Plugin {
         return true;
     }
 
-    public function Init() {
+    public function Init()
+    {
 
     }
 }

@@ -2,10 +2,10 @@
 /**
  * New Webcode - плагин для простого добавления счетчиков
  *
- * Версия:	1.0.2
- * Автор:	Александр Вереник
- * Профиль:	http://livestreet.ru/profile/Wasja/
- * GitHub:	https://github.com/wasja1982/livestreet_newsocialcomments
+ * Версия:    1.0.2
+ * Автор:    Александр Вереник
+ * Профиль:    http://livestreet.ru/profile/Wasja/
+ * GitHub:    https://github.com/wasja1982/livestreet_newsocialcomments
  *
  * Основан на плагине "Webcode" (автор: Артем Сошников) - https://catalog.livestreetcms.com/addon/view/171/
  *
@@ -13,13 +13,16 @@
  *
  **/
 
-class PluginNewwebcode_ActionWebcode extends ActionPlugin {
+class PluginNewwebcode_ActionWebcode extends ActionPlugin
+{
     protected $sMenuHeadItemSelect = 'webcode';
     protected $sCurrentEvent;
-    public function Init(){
+
+    public function Init()
+    {
         $oUserCurrent = $this->User_GetUserCurrent();
         if (!isset($oUserCurrent) || !$oUserCurrent->isAdministrator())
-        Router::Action('error');
+            Router::Action('error');
         else {
             $aEntities = array();
             $aHooks = Config::Get('plugin.newwebcode.hooks');
@@ -35,15 +38,19 @@ class PluginNewwebcode_ActionWebcode extends ActionPlugin {
         }
     }
 
-    public function RegisterEvent(){
-        $this->AddEvent('default','EventDefault');
+    public function RegisterEvent()
+    {
+        $this->AddEvent('default', 'EventDefault');
     }
 
-    public function EventDefault(){
-        if(isset($_POST['webcode']))
-        $this->PluginNewwebcode_Webcode_Submit();
+    public function EventDefault()
+    {
+        if (isset($_POST['webcode']))
+            $this->PluginNewwebcode_Webcode_Submit();
     }
-    public function EventShutdown() {
-        $this->Viewer_Assign('sMenuHeadItemSelect',$this->sMenuHeadItemSelect);
+
+    public function EventShutdown()
+    {
+        $this->Viewer_Assign('sMenuHeadItemSelect', $this->sMenuHeadItemSelect);
     }
 }

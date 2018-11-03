@@ -2,10 +2,10 @@
 /**
  * New Webcode - плагин для простого добавления счетчиков
  *
- * Версия:	1.0.2
- * Автор:	Александр Вереник
- * Профиль:	http://livestreet.ru/profile/Wasja/
- * GitHub:	https://github.com/wasja1982/livestreet_newsocialcomments
+ * Версия:    1.0.2
+ * Автор:    Александр Вереник
+ * Профиль:    http://livestreet.ru/profile/Wasja/
+ * GitHub:    https://github.com/wasja1982/livestreet_newsocialcomments
  *
  * Основан на плагине "Webcode" (автор: Артем Сошников) - https://catalog.livestreetcms.com/addon/view/171/
  *
@@ -13,8 +13,10 @@
  *
  **/
 
-class PluginNewwebcode_HookWebcode extends Hook {
-    public function RegisterHook() {
+class PluginNewwebcode_HookWebcode extends Hook
+{
+    public function RegisterHook()
+    {
         $aHooks = Config::Get('plugin.newwebcode.hooks');
         if ($aHooks && is_array($aHooks)) {
             foreach (array_unique($aHooks) as $sHook) {
@@ -23,14 +25,16 @@ class PluginNewwebcode_HookWebcode extends Hook {
                 }
             }
         }
-        $this->AddHook('template_main_menu_item','menu_admin');
+        $this->AddHook('template_main_menu_item', 'menu_admin');
     }
 
-    public function menu_admin(){
-        return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__).'menu_admin.tpl');
+    public function menu_admin()
+    {
+        return $this->Viewer_Fetch(Plugin::GetTemplatePath(__CLASS__) . 'menu_admin.tpl');
     }
 
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         try {
             $aHooks = Config::Get('plugin.newwebcode.hooks');
             if (in_array($name, $aHooks)) {
