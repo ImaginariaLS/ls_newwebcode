@@ -15,17 +15,25 @@
 
 class PluginNewwebcode_HookWebcode extends Hook
 {
+    const ConfigKey = 'newwebcode';
+    const HooksArray = [
+        'template_html_head_end'  =>  'html_head_end',
+        'template_body_begin'  =>  'body_begin',
+        'template_body_end'  =>  'body_end',
+        'template_main_menu_item'  =>  'menu_admin',
+    ];
+
     public function RegisterHook()
     {
-        $aHooks = Config::Get('plugin.newwebcode.hooks');
-        if ($aHooks && is_array($aHooks)) {
-            foreach (array_unique($aHooks) as $sHook) {
-                if ($sHook) {
-                    $this->AddHook('template_' . $sHook, $sHook);
-                }
-            }
+        $plugin_config_key = $this::ConfigKey;
+        foreach ($this::HooksArray as $hook => $callback) {
+            $this->AddHook(
+                $hook,
+                $callback,
+                __CLASS__,
+                Config::Get("plugin.{$plugin_config_key}.hook_priority.{$hook}") ?? 1
+            );
         }
-        $this->AddHook('template_main_menu_item', 'menu_admin');
     }
 
     public function menu_admin()
